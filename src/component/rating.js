@@ -1,41 +1,26 @@
-import React, { useState } from "react";
-const Rating = () =>{
-    const [list,setList] = useState([]);
+import React from 'react'
 
-    let [title, setTitle] = useState("")
-    const addData = () =>{
-        let newdata = [...list, {id:list.length + 1,title:title}]
-        setList(newdata)
-        setTitle("")
+
+function Rating(){
+     const [data, setdata] = useState([])
+
+     const fetchapi = ()=> {
+        fetch("http://127.0.0.1:8000/api/question/")
+        .then(resp => resp.json())
+        .then(error => console.log(error))
     }
-    const deleteData = (id)=>{
-        setList(list.filter(x =>x.id != id));
-
-    }
-
-    return (
-        <div className="container">
-            <div action="" className="d-flex">
-                <input type="text" className="form-control" placeholder="enter your text" value={title} onChange={(e)=>setTitle(e.target.value)}/>
-                <button className="btn btn-success" onClick={()=>addData()}>Add</button>
-            </div>
-
-            <div className="list-group">
+    return(
+        <div>
+            <ul>
                 {
-                    list.map(value =>(
-                        <div className="list-group-item list-group-item-action" key={value.id}>{value.id}   .  {value.title}
-                        <span className="float-end ">
-                            <button type="button" className="btn btn-link text-danger" onClick={()=>deleteData(value.id)}>
-                            <i class="bi bi-x-circle"></i>
-                            </button>
-                        </span>
-                        </div>
-                        
-                    ))}
-                
-                
-            </div>
+                    data.map(item =>
+                            <li>
+                                {item.title}
+                            </li>
+                        )
+                }
+            </ul>
         </div>
     )
 }
-export default Rating;
+export default Rating
