@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from './component/header';
 import Question from './component/welcome';
 import Second from './component/questions';
+import Submit from './component/submit';
 import './App.css';
 
 function App() {
@@ -26,8 +27,8 @@ function App() {
     <React.Fragment>
           <Router>
           <Route exact path="/"> <Header/><Question /></Route>
-          <Route path="/question"><Header/><Second questions={questions}/>
-          </Route>
+          <Route path="/question"><Header/><Second questions={questions}/></Route>
+          <Route path="/submit"><Header/><Submit/></Route>
         </Router>
     </React.Fragment>
   );

@@ -6,8 +6,8 @@ export class API {
         }
         else{
             jsonObj.push({"question": question, "answer":answer})
-            console.log(jsonObj);
         }
+        console.log(jsonObj[0].question)
         return jsonObj
     }
 
@@ -20,6 +20,7 @@ export class API {
             body: JSON.stringify({data:jsonObj })
         })
         .then(resp => resp.json())
-        .catch(error => console.log(error))
+        .catch(error => console.log(error));
+        
     }
 }
